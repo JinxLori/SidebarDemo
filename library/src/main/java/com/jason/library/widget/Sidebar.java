@@ -16,7 +16,6 @@ import android.view.View;
 public class Sidebar extends View{
     public static String[] alphabets = new String[]{ "A", "B", "C", "D", "E", "F", "G", "H", "I",
             "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" };
-    private boolean isSelected; //是否选中
     private int selectedPosition; //选中字母的位置
     private Paint mPaint;
     private int cellHeight; //每一个字母的高度
@@ -62,7 +61,7 @@ public class Sidebar extends View{
         String alphabet = alphabets[positon];
 
         mPaint.setColor(alphabetDefaultColor);
-        if (isSelected){
+        if (isPressed()){
             if (positon == selectedPosition){
                 mPaint.setColor(alphabetSelectedColor);
                 if (onAlphabetChangeListener != null){
@@ -80,14 +79,14 @@ public class Sidebar extends View{
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
-                isSelected = true;
+                setPressed(true);
                 break;
             case MotionEvent.ACTION_MOVE:
                 float y = event.getY();
                 selectedPosition = (int)(Math.ceil((y / cellHeight)) - 1);
                 break;
             case MotionEvent.ACTION_UP:
-                isSelected = false;
+                setPressed(false);
                 break;
         }
         invalidate();
