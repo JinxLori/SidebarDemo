@@ -5,8 +5,16 @@
     android:layout_height="match_parent"
     tools:context="com.jason.sidebardemo.MainActivity">
 
-    <com.jason.library.widget.Sidebar
+    <ListView
+        android:id="@+id/list"
+        android:divider="@null"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <com.jason.library.widget.Sidebar
+        android:id="@+id/sidebar"
+        android:layout_alignParentRight="true"
+        android:layout_width="30dp"
         android:layout_height="match_parent" />
 
 </RelativeLayout>
